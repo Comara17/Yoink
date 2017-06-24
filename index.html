@@ -13,6 +13,25 @@
 
 <body>
 
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '679455808909655',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
     <!--row to contain logo-->
     <div class="row" id="logoDiv">
         <!--spacer div to center logo-->
@@ -32,9 +51,7 @@
 
                 
                 <!--search button-->
-                <a href="grid.html">
-                <button class="btn btn-default" id="searchButton"><strong>SEARCH FOR FREE STUFF!</strong></button>
-                </a>    
+
                 <!--post button-->
                 <button class="btn btn-default" id="postButton"><strong>POST FREE STUFF!</strong></button>
 
