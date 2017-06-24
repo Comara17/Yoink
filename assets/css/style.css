@@ -1,140 +1,154 @@
-<!DOCTYPE html>
-<html lang="us">
+/*background*/
 
-<head>
-    <meta charset="UTF-8">
-    <title>Yoink! -Find free stuff!</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!--JQuery link-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
+* {box-sizing: border-box;
+}
 
-<body>
+body {
+    background-image: url("../images/background5.jpg");
+    background-size: cover;    
+    padding-top: 80px;
+}
 
-    <!--navbar begin-->
-    <nav id="navBar" class="navbar navbar-default navbar-fixed-top navbar-collapse">
+/*controls size of logo*/
+#logo {
+   /* height: 400px; */
+    width: 700px;
+}
 
-        <div class="row">
-            <div class="container">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <!--navbar logo-->
-                    <img id="navLogo" alt="Brand" src="assets/images/yoinklogonavbar.png">
-                    <!--navbar post button-->
-                    <button type="button" id="navPostBtn" class="btn btn-primary">Post an item</button>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-    </nav>
+/*centers logo on front page*/
+#logoDiv {
+    text-align: center;    
+}
 
+/*navbar colors and size*/
+#navBar{
+    background-color: #4b4b4b;
+    margin-bottom: 400px;
+    min-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 
+/*logo inside navbar*/
+#navLogo {
+    height: 45px;
+}
 
-    <!--row that contains mab and items list-->
-    <div class="row">
+/*post button in nav bar, style and position*/
+#navPostBtn {
+    float: right;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
 
-        <div class="container">
-            <!--spacer div to center table-->
-            <div class="col-md-1"></div>
+/*centers buttons on front page*/
+#buttonHolder {
+    text-align: center;
+}
 
-            <!--div that holds map and items list-->
-            <div class="col-md-10">
-                <!--map--->
+/*submit button font, size, shadow and coloration*/
+#searchButton, #postButton {
 
-                <img src="assets/images/map.jpg" id="map">
+    background-color: #467308;
+    color: white;
+    height: 70px;   
+    margin: 20px;
+    text-align: center;
+    font-family: Adobe Gothic Std;
+    border-radius: 160px 160px 160px 160px;
+    -moz-border-radius: 160px 160px 160px 160px;
+    -webkit-border-radius: 160px 160px 160px 160px;    
+    -webkit-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+}
 
-                <!--items list panel-->
-                <div class="panel panel-default panel-table" id="gridItem">
-                    <div class="panel-heading" id="panelHeading">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6">
-                                <h3 class="panel-title">Items Found</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
+/*for map in grid page, positions and sizes*/
+#map {
+    float: left;
+    width: 48%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 0px solid #000000;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    
+}
 
-                        <!--items list-->
-                        <div class="list-group">
-                            <!--item-->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Free Patio furniture, Pick up</h4>
-                                    Sturdy white set with green/teal cushions. Table with 4 chairs and bar with 2 stools. Some light staining on the table top. Free for driveway pick up on the side of the house. Message for address!
-                                </div>
-                                <div class="media-right">
-                                    <a href="#">
-                                        <img id="itemImage" class="media-object" src="assets/images/example2.jpg" alt="...">
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
+/*panel heading of items section on grid page*/
+#panelHeading {
+    color: white;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 1px 1px;
+    -moz-border-radius: 20px 20px 1px 1px;
+    -webkit-border-radius: 20px 20px 1px 1px;
+    border: 5px solid #white;
+}
 
-                            <!--item-->
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Free Item 2</h4>
-                                    item description
-                                </div>
-                                <div class="media-right">
-                                    <a href="#">
-                                        <img id="itemImage" class="media-object" src="#" alt="...">
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
+/*words in panel heading of items section on grid page*/
+.panel-title {
+    padding: 15px 5px 5px 5px;
+    font-size: 20px;
+}
 
-                            <!--items list panel footer-->
-                        </div>
-                        <div class="panel-footer" id="panelFooter">
-                            <div class="row">
-                                <!--shows what page number user is on-->
-                                <div class="col col-xs-4">Page 1 of 3
-                                </div>
-                                <div class="col col-xs-8">
-                                    <!--page numbers-->
-                                    <ul class="pagination hidden-xs pull-right">
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                    </ul>
-                                    
-                                    <!--page numbers-->
-                                    <ul class="pagination visible-xs pull-right">
-                                        <li><a href="#">«</a></li>
-                                        <li><a href="#">»</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-1"></div>
-
-                    <!--div that holds map and items end-->
-                </div>
-
-                <!--spacer div to center map and grid-->
-                <div class="col-md-1"></div>
-
-            </div>
-        </div>
-    </div>
-
-        <!--footer begin-->
-        <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
-            <div class="container" >
-                Copyright &copy; 2017 Yoink Inc.
-            </div>
-        </nav>
-        <!--footer end-->
-
-</body>
-
-<!--Jquery and Javascript links-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+/*panel of items section on grid page*/
+.panel-body {
+    padding: 10px 20px 5px 20px;
+}
 
 
-</html>
+/*items listed in panel of grid page*/
+#gridItem{
+   
+    background-color: white;
+    float: right;
+    width: 48%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #000000;
+}
+
+/*items image sizing*/
+#itemImage{
+    height: 30%;
+}
+
+/*footer of panel of items section on grid page*/
+#panelFooter {
+    color: black;
+    background-color: white;
+    border-radius: 1px 1px 20px 20px;
+    -moz-border-radius: 1px 1px 20px 20px;
+    -webkit-border-radius: 1px 1px 20px 20px;
+    border: 0px solid #000000;
+}
+  
+/*footer text, text align, size, shadow and coloration*/
+#footer {
+    background-color: #4b4b4b;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 2%;
+    padding: 10px;
+    font-family: Calibri;
+    font-size: 14px;
+    border-top: 3px;
+    border-style: solid;   
+    border-color: white;     
+    border-width: 2px;
+}
