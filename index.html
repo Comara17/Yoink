@@ -13,25 +13,7 @@
 
 <body>
 
-	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '679455808909655',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();   
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
     <!--row to contain logo-->
     <div class="row" id="logoDiv">
         <!--spacer div to center logo-->
@@ -43,19 +25,35 @@
     </div>
 
     <!--row to contain form with button-->
-    <div class="row">
+    <div class="row" id="buttonHolder">
         <!--spacer div to center form and button-->
         <div class="col-md-2"></div>
         <!--form and button div-->
         <div class="col-md-8">
-                <!--input box-->
 
-                
+                <div class="container text-center">
                 <!--search button-->
-                <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-				<button class="btn btn-default" id="searchButton"><strong>SEARCH FOR FREE STUFF!</strong></button>
+				<button class="btn btn-primary btn-lg" id="search">Search for Free Stuff!</button>
                 <!--post button-->
-                <button class="btn btn-default" id="postButton"><strong>POST FREE STUFF!</strong></button>
+                
+				<button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Post an Item!
+				</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Please Login</h4>
+						  </div>
+						  <div class="modal-body">
+							<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLogin()"></div>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>
 
 
             <!--end of div to center page sections-->
@@ -65,13 +63,14 @@
         <!--row to contain form with button end-->
     </div>
 
-    <!--footer begin-->
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container" id="footer">
-            Copyright &copy; 2017 Renaut, Nguyen, Olson, O'Mara
-        </div>
+   <!--footer begin-->
+        <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
+            <div class="container" >
+                Copyright &copy; 2017 Yoink Inc.
+            </div>
+        </nav>
         <!--footer end-->
-    </nav>
+
 
 </body>
 

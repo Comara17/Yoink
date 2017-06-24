@@ -1,7 +1,17 @@
+#map {
+	width: 100%;
+	height: 400px;
+}
+
 /*background*/
+
+* {box-sizing: border-box;
+}
+
 body {
     background-image: url("../images/background5.jpg");
-    background-size: cover;        
+    background-size: cover;    
+    padding-top: 80px;
 }
 
 /*controls size of logo*/
@@ -10,31 +20,50 @@ body {
     width: 700px;
 }
 
-/*centers logo*/
+/*centers logo on front page*/
 #logoDiv {
     text-align: center;    
 }
 
-/*centers form contents*/
-.form-inline {
-    text-align: center;   
+/*navbar colors and size*/
+#navBar{
+    background-color: #4b4b4b;
+    margin-bottom: 400px;
+    min-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
-/*input box size, shadow and coloration*/
-.form-control {
-    margin-right: 10px;
-    height: 70px;
-    font-family: Adobe Gothic Std;
-    -webkit-box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
+/*logo inside navbar*/
+#navLogo {
+    height: 45px;
+}
+
+/*post button in nav bar, style and position*/
+#navPostBtn {
+    float: right;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+/*centers buttons on front page*/
+#buttonHolder {
+    text-align: center;
 }
 
 /*submit button font, size, shadow and coloration*/
-#submitButton {
-    background-color: #46e619;
+#searchButton, #postButton {
+
+    background-color: #467308;
     color: white;
-    height: 70px;    
+    height: 70px;   
+    margin: 20px;
+    text-align: center;
     font-family: Adobe Gothic Std;
     border-radius: 160px 160px 160px 160px;
     -moz-border-radius: 160px 160px 160px 160px;
@@ -44,51 +73,87 @@ body {
     box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
 }
 
-/*table row color */
-#table {
-    margin-top: 50px;
-    margin-bottom: 80px;
+/*for map in grid page, positions and sizes*/
+#map {
+    float: left;
+    width: 48%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 0px solid #000000;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    
+}
+
+/*panel heading of items section on grid page*/
+#panelHeading {
+    color: white;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 1px 1px;
+    -moz-border-radius: 20px 20px 1px 1px;
+    -webkit-border-radius: 20px 20px 1px 1px;
+    border: 5px solid #white;
+}
+
+/*words in panel heading of items section on grid page*/
+.panel-title {
+    padding: 15px 5px 5px 5px;
+    font-size: 20px;
+}
+
+/*panel of items section on grid page*/
+.panel-body {
+    padding: 10px 20px 5px 20px;
+}
+
+
+/*items listed in panel of grid page*/
+#gridItem{
+   
     background-color: white;
-    font-family: Adobe Gothic Std;
-    border-radius: 10px 10px 10px 10px;
-    -webkit-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-}
-
-/*table heading font and color */
-th {
-    font-size: 30px;
-    background-color: #46e619;
-    color: #faf208;
-}
-
-/*table row color */
-tr {
-    color: black;
-}
-
-
-/*map icon size and placement */
-.mapIcon {
-    width: 5%;
     float: right;
+    width: 48%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #000000;
+}
+
+/*items image sizing*/
+#itemImage{
+    height: 30%;
+}
+
+/*footer of panel of items section on grid page*/
+#panelFooter {
+    color: black;
+    background-color: white;
+    border-radius: 1px 1px 20px 20px;
+    -moz-border-radius: 1px 1px 20px 20px;
+    -webkit-border-radius: 1px 1px 20px 20px;
+    border: 0px solid #000000;
 }
   
 /*footer text, text align, size, shadow and coloration*/
 #footer {
-    background-color: #46e619;
+    background-color: #4b4b4b;
     width: 100%;
     color: white;
     text-align: center;
-    height: 100%;
-    padding: 20px;
+    height: 2%;
+    padding: 10px;
     font-family: Calibri;
-    font-size: 18px;
+    font-size: 14px;
     border-top: 3px;
-    border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
     border-style: solid;   
     border-color: white;     
+    border-width: 2px;
 }

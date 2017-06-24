@@ -13,78 +13,132 @@
 
 <body>
 
+    <!--navbar begin-->
+    <nav id="navBar" class="navbar navbar-default navbar-fixed-top navbar-collapse">
 
-    <!--row to contain table-->
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <!--navbar logo-->
+                    <img id="navLogo" alt="Brand" src="assets/images/yoinklogonavbar.png">
+                    <!--navbar post button-->
+                    <button type="button" id="navPostBtn" class="btn btn-primary">Post an item</button>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+    </nav>
+
+
+
+    <!--row that contains mab and items list-->
     <div class="row">
-        <!--spacer div to center table-->
-        <div class="col-md-2"></div>
-        
-        <!--div that holds table start-->
-        <div class="col-md-8">
-            
-            <!--table start-->
-            <table class="table table-hover" id="table">
-                <thead>
-                    <tr>
-                        <th scope="row">#</th>
-                        <th colspan="2">Items Near You</td>
-                    </tr>
-                </thead>
 
-                <!--table body-->
-                <tbody>
-                    <tr>
-                        <!--table number-->
-                        <th scope="row">1</th>
-                        <!--item and description-->
-                        <td>Free Bathtub - Free alcove bathtub to whoever wants it. Great shape just not the color I wanted.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius molestie imperdiet. Sed non egestas mi. Nullam ullamcorper ante hendrerit justo auctor molestie. Donec in urna nec ex tincidunt tempus. Donec sit amet facilisis nisi. Pellentesque quis mauris semper tellus facilisis suscipit ac eu eros. Praesent quis pellentesque diam, eget gravida ligula.
+        <div class="container">
+            <!--spacer div to center table-->
+            <div class="col-md-1"></div>
 
-                        Vivamus non tellus at urna placerat aliquet quis vitae sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur suscipit, nibh id accumsan volutpat, ligula eros lobortis est, facilisis pharetra augue quam sit amet massa. Maecenas sollicitudin accumsan leo. Nullam varius libero id justo dapibus commodo. Maecenas sodales tellus quis bibendum venenatis. Proin fringilla porttitor orci sed auctor.
-                                            <!--image if available-->
-                        <img src="assets/images/mapIcon.jpg" class="mapIcon"></td>
-                    </tr>
+            <!--div that holds map and items list-->
+            <div id="map"></div>
+                <!--map--->
 
-                    <tr>
-                        <th scope="row"></th>
-                        <td><img src="assets/images/example1.jpg"></td>
-                    </tr>
+<!--                <img src="assets/images/map.jpg" id="map">-->
 
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius molestie imperdiet. Sed non egestas mi. Nullam ullamcorper ante hendrerit justo auctor molestie. Donec in urna nec ex tincidunt tempus. Donec sit amet facilisis nisi. Pellentesque quis mauris semper tellus facilisis suscipit ac eu eros. Praesent quis pellentesque diam, eget gravida ligula.                          
-                        <img src="assets/images/mapIcon.jpg" class="mapIcon"></td>
-                    </tr>
+                <!--items list panel-->
+                <div class="panel panel-default panel-table" id="gridItem">
+                    <div class="panel-heading" id="panelHeading">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <h3 class="panel-title">Items Found</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
 
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Item - Description.<img src="assets/images/mapIcon.jpg" class="mapIcon"></td>
-                    </tr>
-                </tbody>                
-            <!--table end-->
-            </table>
-        
-        
-        <!--div that holds table end-->
+                        <!--items list-->
+                        <div class="list-group">
+                            <!--item-->
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Free Patio furniture, Pick up</h4>
+                                    Sturdy white set with green/teal cushions. Table with 4 chairs and bar with 2 stools. Some light staining on the table top. Free for driveway pick up on the side of the house. Message for address!
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img id="itemImage" class="media-object" src="assets/images/example2.jpg" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <!--item-->
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Free Item 2</h4>
+                                    item description
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img id="itemImage" class="media-object" src="#" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <!--items list panel footer-->
+                        </div>
+                        <div class="panel-footer" id="panelFooter">
+                            <div class="row">
+                                <!--shows what page number user is on-->
+                                <div class="col col-xs-4">Page 1 of 3
+                                </div>
+                                <div class="col col-xs-8">
+                                    <!--page numbers-->
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                    </ul>
+                                    
+                                    <!--page numbers-->
+                                    <ul class="pagination visible-xs pull-right">
+                                        <li><a href="#">«</a></li>
+                                        <li><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <!--div that holds map and items end-->
+                </div>
+
+                <!--spacer div to center map and grid-->
+                <div class="col-md-1"></div>
+
+            </div>
         </div>
-    
-        <!--spacer div to center form and button-->
-        <div class="col-md-2"></div>
-        <!--row to contain form with button end-->
     </div>
 
-    <!--footer begin-->
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container" id="footer">
-            Copyright &copy; 2017 Renaut, Nguyen, Olson, O'Mara
-        </div>
+        <!--footer begin-->
+        <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
+            <div class="container" >
+                Copyright &copy; 2017 Yoink Inc.
+            </div>
+        </nav>
         <!--footer end-->
-    </nav>
+<!--Jquery and Javascript links-->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1JK__dLzHVwxSt9WNe2L3bocWqe06uJU&callback=initMap"
+  type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="assets/js/app.js"></script>
 
 </body>
 
-<!--Jquery and Javascript links-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
 
 </html>
