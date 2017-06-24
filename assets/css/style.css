@@ -1,94 +1,140 @@
-/*background*/
-body {
-    background-image: url("../images/background5.jpg");
-    background-size: cover;        
-}
+<!DOCTYPE html>
+<html lang="us">
 
-/*controls size of logo*/
-#logo {
-   /* height: 400px; */
-    width: 700px;
-}
+<head>
+    <meta charset="UTF-8">
+    <title>Yoink! -Find free stuff!</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--JQuery link-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
 
-/*centers logo*/
-#logoDiv {
-    text-align: center;    
-}
+<body>
 
-/*centers form contents*/
-.form-inline {
-    text-align: center;   
-}
+    <!--navbar begin-->
+    <nav id="navBar" class="navbar navbar-default navbar-fixed-top navbar-collapse">
 
-/*input box size, shadow and coloration*/
-.form-control {
-    margin-right: 10px;
-    height: 70px;
-    font-family: Adobe Gothic Std;
-    -webkit-box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.75);
-}
-
-/*submit button font, size, shadow and coloration*/
-#submitButton {
-    background-color: #46e619;
-    color: white;
-    height: 70px;    
-    font-family: Adobe Gothic Std;
-    border-radius: 160px 160px 160px 160px;
-    -moz-border-radius: 160px 160px 160px 160px;
-    -webkit-border-radius: 160px 160px 160px 160px;    
-    -webkit-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-}
-
-/*table row color */
-#table {
-    margin-top: 50px;
-    margin-bottom: 80px;
-    background-color: white;
-    font-family: Adobe Gothic Std;
-    border-radius: 10px 10px 10px 10px;
-    -webkit-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
-}
-
-/*table heading font and color */
-th {
-    font-size: 30px;
-    background-color: #46e619;
-    color: #faf208;
-}
-
-/*table row color */
-tr {
-    color: black;
-}
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <!--navbar logo-->
+                    <img id="navLogo" alt="Brand" src="assets/images/yoinklogonavbar.png">
+                    <!--navbar post button-->
+                    <button type="button" id="navPostBtn" class="btn btn-primary">Post an item</button>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+    </nav>
 
 
-/*map icon size and placement */
-.mapIcon {
-    width: 5%;
-    float: right;
-}
-  
-/*footer text, text align, size, shadow and coloration*/
-#footer {
-    background-color: #46e619;
-    width: 100%;
-    color: white;
-    text-align: center;
-    height: 100%;
-    padding: 20px;
-    font-family: Calibri;
-    font-size: 18px;
-    border-top: 3px;
-    border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
-    border-style: solid;   
-    border-color: white;     
-}
+
+    <!--row that contains mab and items list-->
+    <div class="row">
+
+        <div class="container">
+            <!--spacer div to center table-->
+            <div class="col-md-1"></div>
+
+            <!--div that holds map and items list-->
+            <div class="col-md-10">
+                <!--map--->
+
+                <img src="assets/images/map.jpg" id="map">
+
+                <!--items list panel-->
+                <div class="panel panel-default panel-table" id="gridItem">
+                    <div class="panel-heading" id="panelHeading">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <h3 class="panel-title">Items Found</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <!--items list-->
+                        <div class="list-group">
+                            <!--item-->
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Free Patio furniture, Pick up</h4>
+                                    Sturdy white set with green/teal cushions. Table with 4 chairs and bar with 2 stools. Some light staining on the table top. Free for driveway pick up on the side of the house. Message for address!
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img id="itemImage" class="media-object" src="assets/images/example2.jpg" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <!--item-->
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Free Item 2</h4>
+                                    item description
+                                </div>
+                                <div class="media-right">
+                                    <a href="#">
+                                        <img id="itemImage" class="media-object" src="#" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <!--items list panel footer-->
+                        </div>
+                        <div class="panel-footer" id="panelFooter">
+                            <div class="row">
+                                <!--shows what page number user is on-->
+                                <div class="col col-xs-4">Page 1 of 3
+                                </div>
+                                <div class="col col-xs-8">
+                                    <!--page numbers-->
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                    </ul>
+                                    
+                                    <!--page numbers-->
+                                    <ul class="pagination visible-xs pull-right">
+                                        <li><a href="#">«</a></li>
+                                        <li><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <!--div that holds map and items end-->
+                </div>
+
+                <!--spacer div to center map and grid-->
+                <div class="col-md-1"></div>
+
+            </div>
+        </div>
+    </div>
+
+        <!--footer begin-->
+        <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
+            <div class="container" >
+                Copyright &copy; 2017 Yoink Inc.
+            </div>
+        </nav>
+        <!--footer end-->
+
+</body>
+
+<!--Jquery and Javascript links-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+</html>
