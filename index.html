@@ -13,33 +13,15 @@
 
 <body>
 
-	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '679455808909655',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();   
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
     <!--row to contain logo-->
     <div class="row" id="logoDiv">
         <!--spacer div to center logo-->
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
         <!--logo picture div and image-->
-        <div class="col-md-8"><img src="assets/images/yoinklogo5.png" alt="yoink! logo" id="logo"></div>
+        <div class="col-md-6"><img src="assets/images/yoinklogo6.png" alt="yoink! logo" id="logo"></div>
         <!--spacer div to center logo-->
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
     </div>
 
     <!--row to contain form with button-->
@@ -49,11 +31,28 @@
         <!--form and button div-->
         <div class="col-md-8">
 
-                
-                <!--search button-->
-
+                               <!--search button-->
+				<button class="btn btn-primary btn-lg" id="search">Search for Free Stuff!</button>
                 <!--post button-->
-                <button class="btn btn-default" id="postButton"><strong>POST FREE STUFF!</strong></button>
+                
+				<button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Post an Item!
+				</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Please Login</h4>
+						  </div>
+						  <div class="modal-body">
+							<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLogin()"></div>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						  </div>
+						</div>
+					  </div>
+					
+				</div>
 
 
             <!--end of div to center page sections-->
