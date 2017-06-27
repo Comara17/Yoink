@@ -3,6 +3,11 @@
 	height: 400px;
 }
 
+
+.pac-container {
+	z-index: 1500;
+}
+
 /*background*/
 
 * {box-sizing: border-box;

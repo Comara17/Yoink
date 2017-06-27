@@ -12,7 +12,8 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 	  var loginButton = document.getElementById('navLoginBtn');
 	  var postButton = document.getElementById('navPostBtn');
-	  if (response.status === 'connected' && window.location.href === "grid.html") {
+
+	  if (response.status === 'connected') {
 		loginButton.style.display = 'none';
 		} else {
 		postButton.style.display = 'none';
@@ -47,13 +48,18 @@ window.fbAsyncInit = function() {
  function initMap() {
 	var florida = {lat: 28.54, lng: -81.38};
 	var map = new google.maps.Map(document.getElementById('map'), {
-	zoom: 6,
+
+	zoom: 7,
+
 	center: florida
 	});
 	var marker = new google.maps.Marker({
 	position: florida,
 	map: map
 	});
+
+	var input = document.getElementById('location-input');
+	var autocomplete = new google.maps.places.SearchBox(input);
 }
 
 //Initialize Firebase
@@ -104,8 +110,6 @@ $(document).on("click",".inputPic", function(){
    $( ".inputPic" ).remove();
    $("#files").val("")
 });
-
-
 
 
   
