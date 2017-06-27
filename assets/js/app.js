@@ -12,7 +12,7 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 	  var loginButton = document.getElementById('navLoginBtn');
 	  var postButton = document.getElementById('navPostBtn');
-	  if (response.status === 'connected') {
+	  if (response.status === 'connected' && window.loction.href = "grid.html") {
 		loginButton.style.display = 'none';
 		} else {
 		postButton.style.display = 'none';
@@ -42,25 +42,6 @@ window.fbAsyncInit = function() {
  var checkLogin = function() {
 	document.location.href = 'grid.html';
 	}
-
-//
-//	 FB.getLoginStatus(function(response) {
-//	  if (response.status === 'connected') {
-//		// the user is logged in and has authenticated your
-//		// app, and response.authResponse supplies
-//		// the user's ID, a valid access token, a signed
-//		// request, and the time the access token 
-//		// and signed request each expire
-//		var uid = response.authResponse.userID;
-//		var accessToken = response.authResponse.accessToken;
-//	  } else if (response.status === 'not_authorized') {
-//		// the user is logged in to Facebook, 
-//		// but has not authenticated your app
-//	  } else {
-//		// the user isn't logged in to Facebook.
-//	  }
-//	 });
-
 
 //Initialize GoogleMaps API	
  function initMap() {
@@ -123,6 +104,8 @@ $(document).on("click",".inputPic", function(){
    $( ".inputPic" ).remove();
    $("#files").val("")
 });
+
+
 
 
   
