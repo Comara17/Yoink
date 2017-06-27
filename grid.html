@@ -16,21 +16,76 @@
 
     <!--navbar begin-->
     <nav id="navBar" class="navbar navbar-default navbar-fixed-top navbar-collapse">
-
-        <div class="row">
+		<div class="row">
             <div class="container">
                 <div class="col-md-1"></div>
-                <div class="col-md-10 container">
-                    <!--navbar logo-->
-                    <a href="index.html">
-                    <img id="navLogo" alt="Brand" src="assets/images/yoinklogonavbar.png">
-                    </a>    
-                    <!--navbar post button-->
-                    <button type="button" id="navPostBtn" class="btn btn-primary">Post an item</button>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-    </nav>
+                	<div class="col-md-10 container">
+						
+						<!--navbar logo-->
+						<a href="index.html">
+							<img id="navLogo" alt="Brand" src="assets/images/yoinklogonavbar.png">
+						</a>    
+						
+						<!--navbar post button-->
+							<button type="button" id="navPostBtn" class="btn btn-primary" data-toggle="modal" data-target="#postModal">Post an item</button>
+								<div class="modal fade" id="postModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Form</h4>
+											</div>
+											<div class="modal-body">
+												<div class="form-group">
+													<label for="Location">Location</label>
+													<input type="text" class="form-control" id="location-input">
+												</div>
+												<div class="form-group">
+													<label for="Item">Item</label>
+													<input type="text" class="form-control" id="item-input">
+												</div>
+												<div class="form-group">
+													<label for="Item description">Desription</label>
+													<textarea class="form-control" rows="5" id="description-input"></textarea>
+												</div>
+
+												<form action="/action_page.php" method="post" enctype="multipart/form-data">
+													Select ONE image to upload:
+													<input type="file" id="files" name="files[]" accept="image/*">
+													<output id="list"></output>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn btn-primary" id = "submit">Submit</button>
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<div class="col-md-1"></div>
+						<button type="button" id="navLoginBtn" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">Login
+							</button>
+								<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+										  <div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">Please Login</h4>
+										  </div>
+										  <div class="modal-body">
+											<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLogin()"></div>
+										  </div>
+										  <div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
 
 
 
@@ -133,15 +188,13 @@
         </nav>
         <!--footer end-->
 <!--Jquery and Javascript links-->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1JK__dLzHVwxSt9WNe2L3bocWqe06uJU&callback=initMap"
-  type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1JK__dLzHVwxSt9WNe2L3bocWqe06uJU&callback=initMap&libraries=places"
+type="text/javascript"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="assets/js/app.js"></script>
 
 </body>
-
-
-
 
 </html>

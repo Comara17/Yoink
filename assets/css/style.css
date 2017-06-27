@@ -1,6 +1,18 @@
+/*size to show up in the form*/
+.inputPic {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }
+
 #map {
 	width: 100%;
 	height: 400px;
+}
+
+
+.pac-container {
+	z-index: 1500;
 }
 
 /*background*/
@@ -18,6 +30,15 @@ body {
     padding-top: 80px;
 }
 
+/*Fixes modal backdrop*/
+.modal-backdrop {
+    z-index: 1020;
+}
+
+.inputPic {
+	height: 150px;
+	width: 200px;
+}
 
 
 /*centers logo on front page*/
@@ -52,6 +73,15 @@ body {
 /*post button in nav bar, style and position*/
 #navPostBtn {
     float: right;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+#navLoginBtn {
+	float: right;
     height: 45px;
     background-color: #467308;
     border-style: solid;
