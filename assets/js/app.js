@@ -8,8 +8,18 @@ window.fbAsyncInit = function() {
 	  xfbml      : true,
 	  version    : 'v2.8'
 	});
-	FB.AppEvents.logPageView();   
-  };
+	FB.AppEvents.logPageView();
+	FB.getLoginStatus(function(response) {
+	  var loginButton = document.getElementById('navLoginBtn');
+	  var postButton = document.getElementById('navPostBtn');
+	  if (response.status === 'connected') {
+		loginButton.style.display = 'none';
+		} else {
+		postButton.style.display = 'none';
+		}
+	});
+
+};
 
  (function(d, s, id){
 	 var js, fjs = d.getElementsByTagName(s)[0];
@@ -52,17 +62,6 @@ window.fbAsyncInit = function() {
 //	 });
 
 
-
-FB.getLoginStatus(function(response) {
-  var loginButton = document.getElementById('navLoginBtn');
-  var postButton = document.getElementById('navPostBtn');
-  if (response.status === 'connected') {
-	loginButton.style.display = 'none';
-	} else {
-	postButton.style.display = 'none';
-	}
-});
-
 //Initialize GoogleMaps API	
  function initMap() {
 	var florida = {lat: 28.54, lng: -81.38};
@@ -93,8 +92,8 @@ var config = {
 
 
 //Redirect on click
-$(document).on('click', '#search', function() {
-	window.location = 'grid.html';
+$("#search").click(function() {
+	window.location.href = 'grid.html';
 });
 
 //Image upload function
