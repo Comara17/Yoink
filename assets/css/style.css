@@ -8,21 +8,29 @@
 * {box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-image: url("../images/background5.jpg");
     background-size: cover;    
     padding-top: 80px;
 }
 
-/*controls size of logo*/
-#logo {
-   /* height: 400px; */
-    width: 700px;
-}
+
 
 /*centers logo on front page*/
 #logoDiv {
     text-align: center;    
+}
+
+
+/*controls size of logo*/
+#logo {
+   /* height: 400px; */
+    width: 100%;
+    display: inline-block;
 }
 
 /*navbar colors and size*/
@@ -53,16 +61,20 @@ body {
 
 /*centers buttons on front page*/
 #buttonHolder {
-    text-align: center;
+    text-align: center;   
+
 }
 
 /*submit button font, size, shadow and coloration*/
-#searchButton, #postButton {
-
+#search, #login {
+    
     background-color: #467308;
+    border: solid white 1px;
     color: white;
+    display: inline-block;
+    font-size: 20px;
     height: 70px;   
-    margin: 20px;
+    margin: 30px;
     text-align: center;
     font-family: Adobe Gothic Std;
     border-radius: 160px 160px 160px 160px;
@@ -73,6 +85,10 @@ body {
     box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
 }
 
+.container{
+    margin-left: auto;
+    margin-right: auto;
+}
 /*for map in grid page, positions and sizes*/
 #map {
     float: left;
@@ -100,6 +116,7 @@ body {
     border: 5px solid #white;
 }
 
+
 /*words in panel heading of items section on grid page*/
 .panel-title {
     padding: 15px 5px 5px 5px;
@@ -113,7 +130,7 @@ body {
 
 
 /*items listed in panel of grid page*/
-#gridItem{
+#gridItem {
    
     background-color: white;
     float: right;
