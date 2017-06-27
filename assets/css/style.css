@@ -68,6 +68,15 @@ body {
     border-width: 1px;
 }
 
+#navLoginBtn {
+	float: right;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
 /*centers buttons on front page*/
 #buttonHolder {
     text-align: center;   

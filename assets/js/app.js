@@ -31,6 +31,16 @@ window.fbAsyncInit = function() {
  var checkLogin = function() {
  	document.location.href = 'grid.html';
  	}
+
+FB.getLoginStatus(function(response) {
+  var loginButton = document.getElementById('navLoginBtn');
+  var postButton = document.getElementById('navPostBtn')
+  if (response.status === 'connected') {
+    loginButton.style.display = 'none';
+	} else {
+	postButton.style.display = 'none';
+	}
+});
 	
 //Initialize GoogleMaps API	
  function initMap() {
