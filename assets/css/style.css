@@ -18,6 +18,15 @@ body {
     padding-top: 80px;
 }
 
+/*Fixes modal backdrop*/
+.modal-backdrop {
+    z-index: 1020;
+}
+
+.inputPic {
+	height: 150px;
+	width: 200px;
+}
 
 
 /*centers logo on front page*/

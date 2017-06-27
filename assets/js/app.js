@@ -1,6 +1,3 @@
-$(document).on('click', '#search', function() {
-	window.location = 'grid.html';
-});
 
 //Initialize Facebook API
 window.fbAsyncInit = function() {
@@ -59,5 +56,42 @@ var config = {
   };
   firebase.initializeApp(config);
   
+//End of initialization
+
+
+//Redirect on click
+$(document).on('click', '#search', function() {
+	window.location = 'grid.html';
+});
+
+//Image upload function
+function handleFileSelect(evt) {
+	var files = evt.target.files; // FileList object
+	//loop for picture
+	for (var i = 0, f; f = files[i]; i++) {
+		var reader = new FileReader();
+		// Closure to capture the file information.
+		reader.onload = (function(theFile) {
+			return function(e) {
+				// Render thumbnail.
+				var span = document.createElement('span');
+				span.innerHTML = ['<img class="inputPic" src="', e.target.result,
+					'" title="', escape(theFile.name), '"/>'
+				].join('');
+				document.getElementById('list').insertBefore(span, null);
+			};
+		})(f);
+		// Read in the image file as a data URL.
+		reader.readAsDataURL(f);
+	}
+}
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+$(document).on("click",".inputPic", function(){
+   $( ".inputPic" ).remove();
+   $("#files").val("")
+});
+
+
   
   
