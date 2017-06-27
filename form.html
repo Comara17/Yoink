@@ -6,6 +6,14 @@
     <title>Yoink</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+<style>
+    .inputPic {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }
+
+</style>
 
 <body>
     <div class="container">
@@ -36,16 +44,16 @@
                             <label for="Item description">Desription</label>
                             <textarea class="form-control" rows="5" id="description-input"></textarea>
                         </div>
-                            
+
                         <form action="/action_page.php" method="post" enctype="multipart/form-data">
-                            Select image to upload:
-                            <input type="file" name="pic" multiple= "multiple" accept="image/*">
-                            <input type="submit">
+                            Select ONE image to upload:
+                            <input type="file" id="files" name="files[]" accept="image/*">
+                            <output id="list"></output>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id = "submit">Submit</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
 
@@ -57,9 +65,45 @@
 
     </div>
 
+ 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+       <script>
+        function handleFileSelect(evt) {
+            var files = evt.target.files; // FileList object
+
+            //loop for picture
+            for (var i = 0, f; f = files[i]; i++) {
+
+                var reader = new FileReader();
+
+                // Closure to capture the file information.
+                reader.onload = (function(theFile) {
+                    return function(e) {
+                        // Render thumbnail.
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img class="inputPic" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'
+                        ].join('');
+                        document.getElementById('list').insertBefore(span, null);
+                    };
+                })(f);
+
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+           
+        $(document).on("click",".inputPic", function(){
+           $( ".inputPic" ).remove();
+           $("#files").val("")
+        });
+
+    </script>
 
 </body>
 
