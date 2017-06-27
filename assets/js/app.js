@@ -12,7 +12,7 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 	  var loginButton = document.getElementById('navLoginBtn');
 	  var postButton = document.getElementById('navPostBtn');
-	  if (response.status === 'connected' && window.loction.href = "grid.html") {
+	  if (response.status === 'connected' && window.location.href = "grid.html") {
 		loginButton.style.display = 'none';
 		} else {
 		postButton.style.display = 'none';
