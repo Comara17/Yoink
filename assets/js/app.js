@@ -1,4 +1,20 @@
+ //Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBRk12SsqUScaiXgY2oUgVRIhHRpKqzPq0",
+    authDomain: "yoink-1b31d.firebaseapp.com",
+    databaseURL: "https://yoink-1b31d.firebaseio.com",
+    projectId: "yoink-1b31d",
+    storageBucket: "yoink-1b31d.appspot.com",
+    messagingSenderId: "426906359481"
+  };
+  firebase.initializeApp(config);
+  console.log('line 11');
+var database = firebase.database();
 
+var myLocation;
+var item;
+var description;
+var pic;
 
 //Initialize Facebook API
 window.fbAsyncInit = function() {
@@ -9,19 +25,20 @@ window.fbAsyncInit = function() {
 	  version    : 'v2.8'
 	});
 	FB.AppEvents.logPageView();
+	//Check login status and show/hide buttons
 	FB.getLoginStatus(function(response) {
 	  var loginButton = document.getElementById('navLoginBtn');
 	  var postButton = document.getElementById('navPostBtn');
-
 	  if (response.status === 'connected') {
 		loginButton.style.display = 'none';
 		} else {
 		postButton.style.display = 'none';
 		}
 	});
+	console.log('Facebook initialized');
 
 };
-
+//Connects to Facebook SDK
  (function(d, s, id){
 	 var js, fjs = d.getElementsByTagName(s)[0];
 	 if (d.getElementById(id)) {return;}
@@ -45,36 +62,39 @@ window.fbAsyncInit = function() {
 	}
 
 //Initialize GoogleMaps API	
- function initMap() {
+function initMap() {
 	var florida = {lat: 28.54, lng: -81.38};
 	var map = new google.maps.Map(document.getElementById('map'), {
-
-	zoom: 7,
-
-	center: florida
-	});
-	var marker = new google.maps.Marker({
-	position: florida,
-	map: map
+		zoom: 9,
+		center: florida
 	});
 
+	//Autocomplete searchbox for post-item modal
 	var input = document.getElementById('location-input');
 	var autocomplete = new google.maps.places.SearchBox(input);
+	autocomplete.bindTo('bounds', map);
+	console.log('autocomplete initialized');
+
+	//Geocodes text-input from location field
+	var geocoder = new google.maps.Geocoder();
+	database.ref().on("child_added", function(snapshot) {
+		var address = snapshot.val().myLocation;
+		function geocodeAddress(geocoder, resultsMap) {
+			geocoder.geocode({'address': address}, function(results, status) {
+				if (status === 'OK') {
+					resultsMap.setCenter(results[0].geometry.location);
+					var marker = new google.maps.Marker({
+						map: resultsMap,
+						position: results[0].geometry.location
+					});
+				}
+			});
+		}
+		geocodeAddress(geocoder, map);
+	});
 }
 
-//Initialize Firebase
-var config = {
-	apiKey: "AIzaSyBRk12SsqUScaiXgY2oUgVRIhHRpKqzPq0",
-	authDomain: "yoink-1b31d.firebaseapp.com",
-	databaseURL: "https://yoink-1b31d.firebaseio.com",
-	projectId: "yoink-1b31d",
-	storageBucket: "yoink-1b31d.appspot.com",
-	messagingSenderId: "426906359481"
-  };
-  firebase.initializeApp(config);
 
-
-  
 //End of initialization
 
 
@@ -111,6 +131,21 @@ $(document).on("click",".inputPic", function(){
    $("#files").val("")
 });
 
+$(document).on("click","#submit", function() {
 
-  
-  
+	myLocation = $("#location-input").val().trim();
+	item = $("#item-input").val().trim();
+	description = $("#description-input").val().trim()
+
+	firebase.database().ref().push({
+	myLocation: myLocation,
+	item: item,
+	description: description,
+	dateAdded:firebase.database.ServerValue.TIMESTAMP
+	});
+});
+
+
+
+
+
