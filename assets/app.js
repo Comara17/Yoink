@@ -79,6 +79,7 @@ var config = {
 firebase.initializeApp(config);
 
 //End of initialization
+var database = firebase.database();
 var myLocation = "";
 var item = "";
 var description = "";
@@ -89,83 +90,114 @@ var file;
 $(document).on("change", "#files", function (event) {
     var file = event.target.files[0];
 
-$(document).on("click", "#submit", function (event) {
-    event.preventDefault();
-    myLocation = $("#location-input").val().trim();
-    item = $("#item-input").val().trim();
-    description = $("#description-input").val().trim();
-    
-    // Create a root reference
-    var storageRef = firebase.storage().ref("UploadedFiles" + file.name);
-    var uploadTask = storageRef.put(file);
-    // Register three observers:
-    // 1. 'state_changed' observer, called any time the state changes
-    // 2. Error observer, called on failure
-    // 3. Completion observer, called on successful completion
-    uploadTask.on('state_changed', function (snapshot) {
+    $(document).on("click", "#submit", function (event) {
+        event.preventDefault();
+        myLocation = $("#location-input").val().trim();
+        item = $("#item-input").val().trim();
+        description = $("#description-input").val().trim();
 
-    }, function (error) {
-        // Handle unsuccessful uploads
-    }, function () {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        var newPostKey = firebase.database().ref().child('posts').push().key;
-        var downloadURL = uploadTask.snapshot.downloadURL;
-        var updates = {};
-        var postData = {
-            url: downloadURL,
-            myLocation: myLocation,
-            item: item,
-            description: description,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
-        };
-        updates[newPostKey] = postData
-        firebase.database().ref().update(updates);
-        console.log(downloadURL);
-        console.log("item: ", item);
-        console.log("description: ", description);
-        console.log("location: ", myLocation);
+        // Create a root reference
+        var storageRef = firebase.storage().ref("UploadedFiles" + file.name);
+        var uploadTask = storageRef.put(file);
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on('state_changed', function (snapshot) {
+
+        }, function (error) {
+            // Handle unsuccessful uploads
+        }, function () {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+            var downloadURL = uploadTask.snapshot.downloadURL;
+            var updates = {};
+            var postData = {
+                url: downloadURL,
+                myLocation: myLocation,
+                item: item,
+                description: description,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            };
+            updates[newPostKey] = postData
+            firebase.database().ref().update(updates);
+            console.log(downloadURL);
+            console.log("item: ", item);
+            console.log("description: ", description);
+            console.log("location: ", myLocation);
+        });
+        //clear form
+        $("#location-input").val("");
+        $("#item-input").val("");
+        $("#description-input").val("");
+        $("#files").val("");
+        $(".inputPic").remove();
+        $(".modal-content").hide();
     });
-//clear form
-    $("#location-input").val("");
-    $("#item-input").val("");
-    $("#description-input").val("");
-    $("#files").val("");
-    $(".inputPic").remove();
-});
 });
 
+database.ref().on("child_added", function (snapshot) {
+            console.log(snapshot.val());
+            console.log(snapshot.val().myLocation);
+            console.log(snapshot.val().item);
+            console.log(snapshot.val().url);
+            console.log(snapshot.val().description);
+    var items = snapshot.val().item;
+    var itemLocation = snapshot.val().myLocation;
+    var imgURL = snapshot.val().url;
+    var information = snapshot.val().description;
 
-//Redirect on click
-$("#search").click(function () {
-    window.location.href = 'grid.html';
-});
+            var imageDiv = $("<div>");
+            //$(imageDiv).addClass("media-left")
+            var imageLoad = $("<img>");
+            $(imageLoad).attr("src", imgURL);
+            $(imageLoad).addClass("imgPic");
+            var tableImg = $(imageDiv).append(imageLoad);
+            
+            var textDiv = $("<div>");
+            $(textDiv).addClass("bodyText");
+            var itemInfo = "<h4>" + items + "</h4>" + "<br>" + itemLocation + information ;
+            var tableText = $(textDiv).append(itemInfo);
+            
+            var contents = $(tableImg).append(itemInfo);
+            var tableRows = $(".list-group").prepend(contents);
 
-//Image upload function
-function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    //loop for picture
-    for (var i = 0, f; f = files[i]; i++) {
-        var reader = new FileReader();
-        // Closure to capture the file information.
-        reader.onload = (function (theFile) {
-            return function (e) {
-                // Render thumbnail.
-                var span = document.createElement('span');
-                span.innerHTML = ['<img class="inputPic" src="', e.target.result,
+                },
+                function (errorObject) {
+                    console.log("The read failed: " + errorObject.code);
+                });
+
+        //Redirect on click
+        $("#search").click(function () {
+            window.location.href = 'grid.html';
+        });
+
+        //Image upload function
+        function handleFileSelect(evt) {
+            var files = evt.target.files; // FileList object
+            //loop for picture
+            for (var i = 0, f; f = files[i]; i++) {
+                var reader = new FileReader();
+                // Closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // Render thumbnail.
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img class="inputPic" src="', e.target.result,
 					'" title="', escape(theFile.name), '"/>'
 				].join('');
-                document.getElementById('list').insertBefore(span, null);
-            };
-        })(f);
-        // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
-    }
-}
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+                        document.getElementById('list').insertBefore(span, null);
+                    };
+                })(f);
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-$(document).on("click", ".inputPic", function () {
-    $(".inputPic").remove();
-    $("#files").val("");
-    
-});
+        $(document).on("click", ".inputPic", function () {
+            $(".inputPic").remove();
+            $("#files").val("");
+
+        });
