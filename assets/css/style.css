@@ -3,13 +3,12 @@
         height: 75px;
         border: 1px solid #000;
         margin: 10px 5px 0 0;
-    }
+}
 
 #map {
 	width: 100%;
-	height: 400px;
+	height: 600px;
 }
-
 
 .pac-container {
 	z-index: 1500;
@@ -51,6 +50,7 @@ body {
 #logo {
    /* height: 400px; */
     width: 100%;
+    max-width: 600px;
     display: inline-block;
 }
 
@@ -68,11 +68,14 @@ body {
 /*logo inside navbar*/
 #navLogo {
     height: 45px;
+
 }
 
 /*post button in nav bar, style and position*/
 #navPostBtn {
     float: right;
+    font-family: Ebrima;
+    font-size: 16px;
     height: 45px;
     background-color: #467308;
     border-style: solid;
@@ -82,16 +85,22 @@ body {
 
 #navLoginBtn {
 	float: right;
+    font-family: Ebrima;
+    font-size: 16px;
     height: 45px;
     background-color: #467308;
     border-style: solid;
     border-color: white;
     border-width: 1px;
+    margin-right: 5px;
+  
 }
 
 /*centers buttons on front page*/
 #buttonHolder {
-    text-align: center;   
+    text-align: center;  
+    font-family: Ebrima;
+    font-size: 16px;
 
 }
 
@@ -102,11 +111,11 @@ body {
     border: solid white 1px;
     color: white;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     height: 70px;   
     margin: 30px;
     text-align: center;
-    font-family: Adobe Gothic Std;
+    font-family: Ebrima;
     border-radius: 160px 160px 160px 160px;
     -moz-border-radius: 160px 160px 160px 160px;
     -webkit-border-radius: 160px 160px 160px 160px;    
@@ -116,13 +125,13 @@ body {
 }
 
 .container{
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
+
 /*for map in grid page, positions and sizes*/
 #map {
     float: left;
-    width: 48%;
+    width: 60%;
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
@@ -151,11 +160,13 @@ body {
 .panel-title {
     padding: 15px 5px 5px 5px;
     font-size: 20px;
+    font-family: Ebrima;
 }
 
 /*panel of items section on grid page*/
 .panel-body {
     padding: 10px 20px 5px 20px;
+	overflow-y: scroll;
 }
 
 
@@ -164,7 +175,8 @@ body {
    
     background-color: white;
     float: right;
-    width: 48%;
+    font-family: Ebrima;
+    width: 38%;
     border-style: solid;
     border-color: white;
     border-width: 3px;
@@ -175,8 +187,9 @@ body {
 }
 
 /*items image sizing*/
-#itemImage{
-    height: 30%;
+.media-object{
+    height: 64px;
+	width: 64px;
 }
 
 /*footer of panel of items section on grid page*/
@@ -194,13 +207,41 @@ body {
     background-color: #4b4b4b;
     width: 100%;
     color: white;
+    font-family: Adobe Fan Heiti Std;
     text-align: center;
     height: 2%;
-    padding: 10px;
-    font-family: Calibri;
-    font-size: 14px;
-    border-top: 3px;
+    padding: 15px;
+
+    font-size: 12px;
+    border-top: 1px;
+    border-bottom: 0px;
     border-style: solid;   
     border-color: white;     
     border-width: 2px;
+}
+
+
+@media only screen and (max-width: 600px) {
+   
+    
+    #map {
+        width: 500px;
+        margin: 10px;
+        
+    }
+    
+    #gridItem {
+        clear: both;
+        float: left;
+        width: 500px;
+        margin: 10px;
+    }
+    
+    #logo {
+       max-width: 400px;        
+    }
+    
+    #buttonHolder {
+        margin-bottom: 20px;
+    }
 }
