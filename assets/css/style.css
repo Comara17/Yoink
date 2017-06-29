@@ -131,7 +131,7 @@ body {
 /*for map in grid page, positions and sizes*/
 #map {
     float: left;
-    width: 60%;
+    width: 58%;
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
@@ -176,7 +176,7 @@ body {
     background-color: white;
     float: right;
     font-family: Ebrima;
-    width: 38%;
+    width: 35%;
     border-style: solid;
     border-color: white;
     border-width: 3px;
