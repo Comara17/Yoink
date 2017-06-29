@@ -15,6 +15,7 @@ var myLocation;
 var item;
 var description;
 var pic;
+var markers = [];
 
 //Initialize Facebook API
 window.fbAsyncInit = function() {
@@ -79,6 +80,10 @@ function initMap() {
 	var geocoder = new google.maps.Geocoder();
 	database.ref().on("child_added", function(snapshot) {
 		var address = snapshot.val().myLocation;
+		var infowindow = new google.maps.InfoWindow({
+        	content: snapshot.val().item
+     	});
+		
 		function geocodeAddress(geocoder, resultsMap) {
 			geocoder.geocode({'address': address}, function(results, status) {
 				if (status === 'OK') {
@@ -86,6 +91,10 @@ function initMap() {
 					var marker = new google.maps.Marker({
 						map: resultsMap,
 						position: results[0].geometry.location
+					});
+					markers.push(marker);
+					marker.addListener('click', function() {
+						infowindow.open(map, marker);
 					});
 				}
 			});
@@ -145,7 +154,8 @@ $(document).on("click","#submit", function() {
 	});
 });
 
-
-
-
-
+database.ref().on("child_added", function(snapshot) {
+	$("#itemTable").append(
+		"<div class='media'> <div class='media-left media-top'> <img class='media-object' src=" + snapshot.val().url + "> </div> <div class='media-body'> <h4 class='media-heading'>" + snapshot.val().item + "</h4>" + snapshot.val().description + "</div></div>"
+	)
+});

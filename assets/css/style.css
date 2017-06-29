@@ -148,6 +148,7 @@ body {
 /*panel of items section on grid page*/
 .panel-body {
     padding: 10px 20px 5px 20px;
+	overflow-y: scroll;
 }
 
 
@@ -167,8 +168,9 @@ body {
 }
 
 /*items image sizing*/
-#itemImage{
-    height: 30%;
+.media-object{
+    height: 64px;
+	width: 64px;
 }
 
 /*footer of panel of items section on grid page*/
