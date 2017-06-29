@@ -15,6 +15,7 @@ var myLocation;
 var item;
 var description;
 var pic;
+var file;
 var markers = [];
 
 //Initialize Facebook API
@@ -103,14 +104,70 @@ function initMap() {
 	});
 }
 
-
 //End of initialization
-
 
 //Redirect on click
 $("#search").click(function() {
 	window.location.href = 'grid.html';
 });
+
+database.ref().on("child_added", function(snapshot) {
+	$("#itemTable").append(
+		"<div class='media'> <div class='media-left media-top'> <img class='media-object' src=" + snapshot.val().url + "> </div> <div class='media-body'> <h4 class='media-heading'>" + snapshot.val().item + "</h4>" + snapshot.val().description + "</div></div>"
+	)
+});
+
+
+//captures information from input section when user hits the submit button  
+
+//get image file to firebase storage
+$(document).on("change", "#files", function (event) {
+    var file = event.target.files[0];
+
+    $(document).on("click", "#submit", function (event) {
+        event.preventDefault();
+		
+		myLocation = $("#location-input").val().trim();
+		item = $("#item-input").val().trim();
+		description = $("#description-input").val().trim();
+
+        // Create a root reference
+        var storageRef = firebase.storage().ref("UploadedFiles" + file.name);
+        var uploadTask = storageRef.put(file);
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on('state_changed', function (snapshot) {
+
+        }, function (error) {
+            // Handle unsuccessful uploads
+        }, function () {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            var newPostKey = firebase.database().ref().child('posts').push().key;
+            var downloadURL = uploadTask.snapshot.downloadURL;
+            var updates = {};
+            var postData = {
+                url: downloadURL,
+				myLocation: myLocation,
+                item: item,
+                description: description,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            };
+            updates[newPostKey] = postData
+            firebase.database().ref().update(updates);
+        });
+        //clear form
+        $("#location-input").val("");
+        $("#item-input").val("");
+        $("#description-input").val("");
+        $("#files").val("");
+        $(".inputPic").remove();
+        $(".modal-content").hide();
+    });
+});
+
 
 //Image upload function
 function handleFileSelect(evt) {
@@ -119,13 +176,13 @@ function handleFileSelect(evt) {
 	for (var i = 0, f; f = files[i]; i++) {
 		var reader = new FileReader();
 		// Closure to capture the file information.
-		reader.onload = (function(theFile) {
-			return function(e) {
+		reader.onload = (function (theFile) {
+			return function (e) {
 				// Render thumbnail.
 				var span = document.createElement('span');
-				span.innerHTML = ['<img class="inputPic" src="', e.target.result,
-					'" title="', escape(theFile.name), '"/>'
-				].join('');
+				span.innerHTML = ['<img class="inputPic" src=', e.target.result,
+			' title="', escape(theFile.name), '"/>'
+		].join('');
 				document.getElementById('list').insertBefore(span, null);
 			};
 		})(f);
@@ -133,29 +190,10 @@ function handleFileSelect(evt) {
 		reader.readAsDataURL(f);
 	}
 }
+
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-$(document).on("click",".inputPic", function(){
-   $( ".inputPic" ).remove();
-   $("#files").val("")
-});
-
-$(document).on("click","#submit", function() {
-
-	myLocation = $("#location-input").val().trim();
-	item = $("#item-input").val().trim();
-	description = $("#description-input").val().trim()
-
-	firebase.database().ref().push({
-	myLocation: myLocation,
-	item: item,
-	description: description,
-	dateAdded:firebase.database.ServerValue.TIMESTAMP
-	});
-});
-
-database.ref().on("child_added", function(snapshot) {
-	$("#itemTable").append(
-		"<div class='media'> <div class='media-left media-top'> <img class='media-object' src=" + snapshot.val().url + "> </div> <div class='media-body'> <h4 class='media-heading'>" + snapshot.val().item + "</h4>" + snapshot.val().description + "</div></div>"
-	)
+$(document).on("click", ".inputPic", function () {
+	$(".inputPic").remove();
+	$("#files").val("");
 });
