@@ -166,7 +166,7 @@ $(document).on("change", "#files", function (event) {
         $("#description-input").val("");
         $("#files").val("");
         $(".inputPic").remove();
-        $(".modal-content").hide();
+//        $(".modal-content").hide();
     });
 });
 
