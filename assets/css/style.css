@@ -1,0 +1,248 @@
+/*size to show up in the form*/
+.inputPic {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+
+}
+
+#map {
+	width: 100%;
+	height: 600px;
+}
+
+.pac-container {
+	z-index: 1500;
+}
+
+/*background*/
+
+* {box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("../images/background5.jpg");
+    background-size: cover;    
+    padding-top: 80px;
+}
+
+/*Fixes modal backdrop*/
+.modal-backdrop {
+    z-index: 1020;
+}
+
+.inputPic {
+	height: 150px;
+	width: 200px;
+}
+
+
+/*centers logo on front page*/
+#logoDiv {
+    text-align: center;    
+}
+
+
+/*controls size of logo*/
+#logo {
+   /* height: 400px; */
+    width: 100%;
+    max-width: 600px;
+    display: inline-block;
+}
+
+/*navbar colors and size*/
+#navBar{
+    background-color: #4b4b4b;
+    margin-bottom: 400px;
+    min-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+/*logo inside navbar*/
+#navLogo {
+    height: 45px;
+
+}
+
+/*post button in nav bar, style and position*/
+#navPostBtn {
+    float: right;
+    font-family: Ebrima;
+    font-size: 16px;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+#navLoginBtn {
+	  float: right;
+    font-family: Ebrima;
+    font-size: 16px;
+    height: 45px;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    margin-right: 5px;
+}
+
+/*centers buttons on front page*/
+#buttonHolder {
+    text-align: center;  
+    font-family: Ebrima;
+    font-size: 16px;
+
+}
+
+/*submit button font, size, shadow and coloration*/
+#search, #login {
+    
+    background-color: #467308;
+    border: solid white 1px;
+    color: white;
+    display: inline-block;
+    font-size: 16px;
+    height: 70px;   
+    margin: 30px;
+    text-align: center;
+    font-family: Ebrima;
+    border-radius: 160px 160px 160px 160px;
+    -moz-border-radius: 160px 160px 160px 160px;
+    -webkit-border-radius: 160px 160px 160px 160px;    
+    -webkit-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: -3px 9px 10px 0px rgba(0,0,0,0.75);
+}
+
+.container{
+    margin: auto;
+}
+
+/*for map in grid page, positions and sizes*/
+#map {
+    float: left;
+    width: 58%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 0px solid #000000;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    
+}
+
+/*panel heading of items section on grid page*/
+#panelHeading {
+    color: white;
+    background-color: #467308;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 1px 1px;
+    -moz-border-radius: 20px 20px 1px 1px;
+    -webkit-border-radius: 20px 20px 1px 1px;
+    border: 5px solid #white;
+}
+
+
+/*words in panel heading of items section on grid page*/
+.panel-title {
+    padding: 15px 5px 5px 5px;
+    font-size: 20px;
+    font-family: Ebrima;
+}
+
+/*panel of items section on grid page*/
+.panel-body {
+    padding: 10px 20px 5px 20px;
+	overflow-y: scroll;
+	height: 400px;
+}
+
+
+/*items listed in panel of grid page*/
+#gridItem {
+   
+    background-color: white;
+    float: right;
+    font-family: Ebrima;
+    width: 35%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #000000;
+}
+
+/*items image sizing*/
+.media-object{
+    height: 64px;
+	width: 64px;
+}
+
+/*footer of panel of items section on grid page*/
+#panelFooter {
+    color: black;
+    background-color: white;
+    border-radius: 1px 1px 20px 20px;
+    -moz-border-radius: 1px 1px 20px 20px;
+    -webkit-border-radius: 1px 1px 20px 20px;
+    border: 0px solid #000000;
+}
+  
+/*footer text, text align, size, shadow and coloration*/
+#footer {
+    background-color: #4b4b4b;
+    width: 100%;
+    color: white;
+    font-family: Adobe Fan Heiti Std;
+    text-align: center;
+    height: 2%;
+    padding: 15px;
+
+    font-size: 12px;
+    border-top: 1px;
+    border-bottom: 0px;
+    border-style: solid;   
+    border-color: white;     
+    border-width: 2px;
+}
+
+
+@media only screen and (max-width: 600px) {
+   
+    
+    #map {
+        width: 500px;
+        margin: 10px;
+        
+    }
+    
+    #gridItem {
+        clear: both;
+        float: left;
+        width: 500px;
+        margin: 10px;
+    }
+    
+    #logo {
+       max-width: 400px;        
+    }
+    
+    #buttonHolder {
+        margin-bottom: 20px;
+    }
+}
